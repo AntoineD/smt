@@ -21,7 +21,10 @@ License :: OSI Approved :: BSD License
 Programming Language :: C++
 Programming Language :: Python
 Programming Language :: Python :: 3
-Programming Language :: Python :: 3.6
+Programming Language :: Python :: 3.7
+Programming Language :: Python :: 3.8
+Programming Language :: Python :: 3.9
+Programming Language :: Python :: 3.10
 Programming Language :: Python :: Implementation :: CPython
 Topic :: Software Development
 Topic :: Scientific/Engineering
@@ -111,7 +114,7 @@ metadata = dict(
         "numpydoc",
         "scipy",
     ],
-    python_requires=">=3.6",
+    python_requires=">=3.7",
     zip_safe=False,
     ext_modules=ext,
     url="https://github.com/SMTorg/smt",  # use the URL to the github repo
