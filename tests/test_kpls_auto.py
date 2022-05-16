@@ -86,8 +86,7 @@ class Test(SMTestCase):
 
         sm.set_training_values(xt, yt)
 
-        with Silence():
-            sm.train()
+        sm.train()
 
         l = sm.options["n_comp"]
 

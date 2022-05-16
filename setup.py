@@ -47,7 +47,7 @@ that are not available elsewhere: kriging by partial-least squares reduction
 and energy-minimizing spline interpolation.
 """
 
-extra_compile_args = []
+extra_compile_args = ["-O2"]
 if not sys.platform.startswith("win"):
     extra_compile_args.append("-std=c++11")
 

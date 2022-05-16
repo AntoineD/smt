@@ -77,6 +77,7 @@ class KPLS(KrgBased):
         self.options["n_comp"] = 0
         nextcomp = True
         while nextcomp:
+            print("first n_comp", self.options["n_comp"])
             self.options["n_comp"] += 1
             press_m = press_m1
             press_m1 = 0
@@ -95,13 +96,20 @@ class KPLS(KrgBased):
                 self.training_points[None][0][1] = yfold
                 try:
                     self._new_train()
-                except ValueError:
+                except ValueError as er:
+                    print(er)
+                    print("decrease n_comp", self.options["n_comp"])
                     self.options["n_comp"] -= 1
                     nextcomp = False
                     break
                 ye = self._predict_values(Xtest)
+                print("ye = ", ye)
+                print("Xtest = ", Xtest)
                 press_m1 = press_m1 + np.sum(np.power((1 / len(X)) * (ye - ytest), 2))
+                print("press_m1 = ", press_m1 / press_m)
+                print("eval_comp_treshold = ",eval_comp_treshold)
             if self.options["n_comp"] > 1 and press_m1 / press_m > eval_comp_treshold:
+                print("decrease n_comp condition", self.options["n_comp"])
                 self.options["n_comp"] -= 1
                 nextcomp = False
         self.training_points[None][0][0] = X
